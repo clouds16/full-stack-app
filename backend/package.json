@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/clouds16/full-stack-app/issues"
   },
-  "homepage": "https://github.com/clouds16/full-stack-app#readme"
+  "homepage": "https://github.com/clouds16/full-stack-app#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongo": "^0.1.0",
+    "mongoose": "^6.0.5",
+    "request": "^2.88.2",
+    "requests": "^0.3.0",
+    "validator": "^13.6.0"
+  }
 }
