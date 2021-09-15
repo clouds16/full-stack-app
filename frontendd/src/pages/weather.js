@@ -5,9 +5,9 @@ import {useState} from 'react'
 function Weather() {
 
   let [temperature , setTemperature] = useState('No data yet')
-  let [summary, setSummary] = useState('No Summary Yet')
+  let [country, setCountry] = useState('')
   let [city, setCity] = useState('City')
-
+ 
 
   function getData(e) {
     axios({
@@ -17,8 +17,9 @@ function Weather() {
         cityname : city
       }
     }).then( (res) =>{
-
-      setTemperature(res.data.temperature - 273)
+      setTemperature(res.data.main.temp - 273)
+      setCountry(res.data.sys.country)
+      
 
     } ).catch( (err) => console.log(err))
     e.preventDefault()
@@ -33,7 +34,7 @@ function Weather() {
     <div className='section weather'>
       <div className='container'>
         <h1> City : {city}</h1>
-        <h2> Temperatuer: {temperature} </h2>
+        <h2> Temperature: {temperature} , {city} {country}  </h2>
         
         
 
