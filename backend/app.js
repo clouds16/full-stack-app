@@ -25,13 +25,25 @@ app.post('/weather' , (req, res) => {
 })
 
 app.get('/cryptos', (req , res)=> {
-    const url = 'https://api.coinbase.com/v2/currencies'
+    const url = 'https://www.cryptingup.com/api/assets'
 
     axios.get(url).then( (response) =>{
-        console.log(response.data.data)
-        res.send(response.data.data)
+        console.log(response.data.assets)
+        res.send(response.data.assets)
     }).catch ( e => res.send(e))
 } )
+
+
+app.get('/cryptos/:id' , (req, res) => {
+
+    const url = "https://www.cryptingup.com/api/assets/"+ req.params.id + "/markets"
+
+    axios.get(url).then( (response) => {
+        console.log(response.data)
+        res.send(data)
+    }).catch( e => res.send(e))
+    
+})
 
 app.listen(port, () => {
 	console.log("Server up on port: " + port);

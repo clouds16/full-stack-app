@@ -1,45 +1,45 @@
 
 import Axios from 'axios';
 import  React , {useState , useEffect} from 'react';
-
 import '../static-elements/cryptos.css'
 
 function Cryptos(){
 
     let [data , setData] = useState([])
     let [check , setCheck] = useState(false)
+    let [search , setSearch] = useState("")
+     
+
+    useEffect(()=> {
+        Axios.get('/cryptos').then( (res) => {
+            console.log(res.data)
+            setData(...data,  res.data)
+            setCheck(true)
+        }).catch( (err) => {
+            console.log(err)
+        })     
     
-  
+    } , [])
+    
 
-    function getData(e) {
-        if(!check) {
-            Axios.get('/cryptos').then( (res) => {
-                console.log(res.data)
-                setData(...data, res.data)
-                
-                console.log('the data is', data)
-            }).catch( (err) => {
-                console.log(err)
-            })
-        }
-        e.preventDefault();
-        setCheck( true)
+    function searchBar(e){
+        setSearch(e.target.value)
+        
     }
-
-
 
     return (
         <section className="cryptos-section">
-            
             <h2> Cryptos page </h2>   
-            <button onClick={getData}>  Get List of Cryptos </button> 
-
-            <div className="flex "> 
-                <div className="mygrid">
+            
+            <form> 
+                <input type="text" value={search} onChange={searchBar} placeholder="Search..."/>
+            </form>
+            <div className="flex crypto-flex"> 
+                <div className="grid crypto-grid">
                 { data.map( crypto => 
-                    <div className="box item">
-                        <h5> {crypto.name} : {crypto.id} </h5>
-                    </div>)}
+                    <a href= {"/cryptos/" + crypto.name} ><button className="container crypto-items">
+                        <h5> {crypto.name} : {crypto.id} , price : {crypto.price}</h5>
+                    </button></a>)}
                 </div>
             </div>
         </section>
