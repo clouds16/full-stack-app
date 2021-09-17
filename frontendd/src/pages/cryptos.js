@@ -6,25 +6,21 @@ import '../static-elements/cryptos.css'
 function Cryptos(){
 
     let [data , setData] = useState([])
-    let [check , setCheck] = useState(false)
     let [search , setSearch] = useState("")
      
-
     useEffect(()=> {
         Axios.get('/cryptos').then( (res) => {
             console.log(res.data)
             setData(...data,  res.data)
-            setCheck(true)
+        
         }).catch( (err) => {
             console.log(err)
         })     
-    
     } , [])
     
 
     function searchBar(e){
         setSearch(e.target.value)
-        
     }
 
     return (
@@ -37,7 +33,7 @@ function Cryptos(){
             <div className="flex crypto-flex"> 
                 <div className="grid crypto-grid">
                 { data.map( crypto => 
-                    <a href= {"/cryptos/" + crypto.name} ><button className="container crypto-items">
+                    <a href= {"/cryptos/" + crypto.id} ><button className="container crypto-items">
                         <h5> {crypto.name} : {crypto.id} , price : {crypto.price}</h5>
                     </button></a>)}
                 </div>
@@ -48,11 +44,3 @@ function Cryptos(){
 
 export default Cryptos;
 
-// {Object.keys(data).map((key, value) =>{
-//     return (
-//         <div>
-//             <p> name : {key.name} </p>
-//             <p> symbol : {key.symbol} </p>
-//         </div>
-//     )
-// })}

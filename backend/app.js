@@ -28,19 +28,19 @@ app.get('/cryptos', (req , res)=> {
     const url = 'https://www.cryptingup.com/api/assets'
 
     axios.get(url).then( (response) =>{
-        console.log(response.data.assets)
+
         res.send(response.data.assets)
     }).catch ( e => res.send(e))
 } )
 
 
 app.get('/cryptos/:id' , (req, res) => {
-
-    const url = "https://www.cryptingup.com/api/assets/"+ req.params.id + "/markets"
+    
+    const url = "https://www.cryptingup.com/api/assets/" + req.params.id
 
     axios.get(url).then( (response) => {
-        console.log(response.data)
-        res.send(data)
+        console.log(response.data.asset)
+        res.send(response.data.asset)
     }).catch( e => res.send(e))
     
 })
