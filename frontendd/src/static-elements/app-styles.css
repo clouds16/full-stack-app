@@ -1,0 +1,23 @@
+.flex{
+    height: inherit ;
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.grid{
+   
+    display: grid;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-columns: 300px 300px 300px 300px 300px;
+    margin: 20px 20px;
+}
+
+.container {
+    overflow: hidden;
+    background-color: blueviolet;
+    padding: 20px 20px;
+    margin: 10px 10px;
+}
