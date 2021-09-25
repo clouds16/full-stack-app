@@ -22,7 +22,8 @@ function Cryptos() {
         setSearch(e.target.value)
     }
     //some new comment to check changes
-    
+    //new comment again
+
 
     return (
         <section className="cryptos-section">
