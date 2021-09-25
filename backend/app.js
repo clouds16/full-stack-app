@@ -37,7 +37,8 @@ app.get('/cryptos', (req , res)=> {
 app.get('/cryptos/:id' , (req, res) => {
     
     const url = "https://www.cryptingup.com/api/assets/" + req.params.id
-
+    //req.params.id find the unique :id element in the route
+    
     axios.get(url).then( (response) => {
         console.log(response.data.asset)
         res.send(response.data.asset)

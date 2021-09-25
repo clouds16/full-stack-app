@@ -3,8 +3,7 @@ import Axios from 'axios';
 import  React , {useState , useEffect} from 'react';
 import '../static-elements/cryptos.css'
 
-function Cryptos(){
-
+function Cryptos() {
     let [data , setData] = useState([])
     let [search , setSearch] = useState("")
      
@@ -22,6 +21,8 @@ function Cryptos(){
     function searchBar(e){
         setSearch(e.target.value)
     }
+    //some new comment to check changes
+    
 
     return (
         <section className="cryptos-section">

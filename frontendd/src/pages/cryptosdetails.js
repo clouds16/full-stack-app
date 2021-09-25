@@ -6,11 +6,12 @@ import '../static-elements/cryptos.css'
 
 function CryptoDetails(props){
     
-    //console.log(props.match.params.id)
+    //console.log(props.match.params.id) This finds the unique id parameter of the route
     let [data , setData] = useState([])
      
     useEffect(()=> {
         console.log('loaded crypto detail page')
+        
         Axios.get('/cryptos/' + props.match.params.id ).then( (res) => {
             console.log(res.data)
             setData(...data,  res.data)
@@ -29,6 +30,7 @@ function CryptoDetails(props){
             <h4> Current Price: {data.price} </h4>
             <h4> 24 Hour change: {data.change_24h}</h4>
             <h4> last hour change : {data.change_1h} </h4>
+            <h5> Time Stamp: {data.time} </h5>
         </section>
     )
 }
